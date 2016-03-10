@@ -3,8 +3,7 @@
 Temporary description : This script calculates, from a ONE LINE FASTA file, the GC content of a nucleotid sequence, using a customizable sliding window.
 
 #Input file must look like :
-\>my_sequence
-
+\>my_sequence  
 ATGTGGCTTCGCTTGCTCTCGCTTCG
 
 #Output file will look like:
