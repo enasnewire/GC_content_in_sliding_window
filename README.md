@@ -5,9 +5,10 @@ This script will first calculate, for each nucleotide position, the %GC of the s
         Then, i will print a value of % each "step" nucleotides
 
 
-#Input file must look like :
-\>my_sequence  
-ATGTGGCTTCGCTTGCTCTCGCTTCG
+Input file must look like :
+    \>my_sequence  
+    ATGTGGCTTCGCTTGCTCTCGCTTCG
+    ATGTGGCTTCGCTTGCTCTCGCTTCG
 
 Usage
 
@@ -23,7 +24,7 @@ Usage
 
 Output files
 
-    genome.fasta.gc_content
+genome.fasta.gc_content
     
     column 1: "chr1" for convenience when the program is used to create an input for Circos (http://www.circos.ca/) 
     column 2: start position of interval
@@ -40,7 +41,7 @@ Output files
     chr1 601 700 0.499
     chr1 701 800 0.5
 
-    genome.fasta.gc_deviation
+genome.fasta.gc_deviation
 
     column 1: "chr1" for convenience when the program is used to create an input for Circos (http://www.circos.ca/) 
     column 2: start position of interval
@@ -56,9 +57,3 @@ Output files
     chr1 501 600 0.16
     chr1 601 700 0.162
 
-#Output file will look like:  
-chr1 0 10 0.546  
-chr1 10 20 0.54075  
-chr1 20 30 0.54525  
-chr1 30 40 0.54975  
-chr1 40 50 0.54725  
