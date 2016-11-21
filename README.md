@@ -6,11 +6,12 @@ This script will first calculate, for each nucleotide position, the %GC of the s
 
 
 Input file must look like :
+
     \>my_sequence  
     ATGTGGCTTCGCTTGCTCTCGCTTCG
     ATGTGGCTTCGCTTGCTCTCGCTTCG
 
-Usage
+#Usage
 
     perl gc_content.pl --fasta genome.fasta [--window 1000] [--step 100] [--log] [--help] 
     
@@ -22,7 +23,7 @@ Usage
     --log   optional. for debugging purposes only
     --help   optional. Shows this help
 
-Output files
+#Output files
 
 genome.fasta.gc_content
     
