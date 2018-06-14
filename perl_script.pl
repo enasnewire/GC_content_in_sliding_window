@@ -106,7 +106,7 @@ foreach my $kkk ( keys %hhh ){
 my $kkk2 = $kkk;
 $kkk2 =~ s/^>//;
 $ijk++;
-print "\n\n### Working on sequence number $ijk ###\n\n";
+print "\n\n### Working on sequence number $ijk named $kkk in fasta file ###\n\n";
 $output = $fasta . "_" . $kkk2 . ".gc_content";
 #if ($fasta =~ /\//){ $output = (split(/\//,$fasta))[-1] . "gc_content" }else{ $output = $fasta . "gc_content"}
 
@@ -127,7 +127,7 @@ print "fasta file is $size_fasta nucleotid long\n\n";
 my $count1 = 0;
 while ($sequence =~ /[GC]/g) { $count1++ }
 my $pcent =  $count1 / $size_fasta * 100 ;
-print "It's computationaly-free to display it, so while i'm at it ...\nthe mean GC content of the sequence is $pcent % \n";
+print "It's computationaly-free to display it, so while i'm at it ...\nthe mean GC content of the sequence $kkk is $pcent % \n";
 my $line_mod = (substr $sequence, -$window/2 ) . $sequence . (substr $sequence, 0, ($window / 2));
 print LOG $line_mod . "\n" if $log;
 
