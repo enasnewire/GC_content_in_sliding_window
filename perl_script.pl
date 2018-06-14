@@ -15,7 +15,7 @@ use Getopt::Long;
     
     
     arguments details :
-    --fasta   a one sequence fasta file, it can be multiline. Program abort if multiple sequences are found one sequence only window(even number ONLY) step(even number ONLY)
+    --fasta   one fasta file that can contain multiple sequences. In that case the script will produce as many output files as input sequences. Each sequence can be multiline.
     --window  optional. Window size, even number ONLY. Sets the number of nucleotides used to calculate the %GC value of each position. Default 1000
     --step  optional. step size. The output will contain a sliding GC% value every "step" nucleotides. The numbers of values you get is therefore (length genome)/(step). Default 100
     --log   optional. for debugging purposes only
