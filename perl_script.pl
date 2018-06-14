@@ -77,33 +77,46 @@ $step =~ s/\r?\n//g;
 
 
 if ($window % 2 == 0)
-{print "Okay, $window is an even number.\n\n"}
+{print "Okay, $window is an even number.\n"}
 else
 {print "\n!!! Warning : window must be an even number... !!!\n\n"; die `pod2text $0`}
 
 
-my $output;
-$output = $fasta . ".gc_content";
-#if ($fasta =~ /\//){ $output = (split(/\//,$fasta))[-1] . "gc_content" }else{ $output = $fasta . "gc_content"}
 
-print "output file is $output\n";
-
-open (OUT, ">", $output ) or die "can't open $!";
-open (LOG, ">", $output . ".log") or die "can't open $!";
+open (LOG, ">", $fasta . ".log") or die "can't open $!";
 open (IN, "<", $fasta) or die "can't open  $!";
 
 my (%h_pcent, $size_fasta, $sequence, $not_sequence);
 my %h_gcdev; #GC_deviation
 $not_sequence = 0;
-
+my %hhh;
+my $title_provisoire;
 while (my $line = <IN>) {
 	$line =~ s/\r?\n//g;
 	$line =~ s/\s//g;
-	$line !~ m/^>/ ? $sequence .= $line : $not_sequence++;
+	if($line =~ /^>/){ if(exists($hhh{$line})){ print "two sequence titles have the exact same name : $line, i'll die now ...\n"; die } ;
+	$title_provisoire = $line}else{ $hhh{$title_provisoire} .= $line }
+	#$line !~ m/^>/ ? $sequence .= $line : $not_sequence++;
 }
 
 #### Running few tests ... ####
-if ($not_sequence > 1) {print "Your fasta file contains more than one sequence (i found the > symbol $not_sequence times, i'll die now ...\n"; die}
+my $output;
+my $ijk = 0;
+foreach my $kkk ( keys %hhh ){
+my $kkk2 = $kkk;
+$kkk2 =~ s/^>//;
+$ijk++;
+print "\n\n### Working on sequence number $ijk ###\n\n";
+$output = $fasta . "_" . $kkk2 . ".gc_content";
+#if ($fasta =~ /\//){ $output = (split(/\//,$fasta))[-1] . "gc_content" }else{ $output = $fasta . "gc_content"}
+
+print "\n\noutput file is $output\n";
+
+open (OUT, ">", $output ) or die "can't open $!";
+open (OUT3, ">", $fasta . "_" . $kkk2 . ".GC_deviation") or die "can't open $!";
+
+my $sequence = $hhh{$kkk};
+
 if ($sequence =~ m/[^ATGC]/)
 {print "Your fasta sequence contains other caracters than [ATGC], i'll keep working normally, it's just so you know ...\n ";}
 
@@ -155,9 +168,9 @@ foreach my $key2 ( sort {$a<=>$b} keys %h_pcent)
 	}
 	
 }
-close OUT;
 
-open (OUT3, ">", $fasta . ".GC_deviation") or die "can't open $!";
+
+
 my $last_end2;
 foreach my $key3 ( sort {$a<=>$b} keys %h_gcdev)
 {
@@ -171,9 +184,14 @@ foreach my $key3 ( sort {$a<=>$b} keys %h_gcdev)
 	
 }
 close OUT3;
+close OUT;
+
+}
+
+
 
 close IN;
-close OUT;
+
 close LOG;
 
 unlink $output . ".log" if !$log;
