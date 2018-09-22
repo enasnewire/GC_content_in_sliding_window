@@ -142,11 +142,16 @@ until ($start > (length($sequence)))
 	while ($tmp =~ /[GC]/g) {$count++}
 	while ($tmp =~ /[C]/g) {$countC++} #GC_deviation
 	while ($tmp =~ /[G]/g) {$countG++} #GC_deviation
+	if(($countG+$countC)==0){ $h_gcdev{$position} = "NA"; ## added 22.09.2018
+	}else{ ## added 22.09.2018
 	my $gcdev = ($countG-$countC)/($countG+$countC) ; #GC_deviation
+	$h_gcdev{$position} = $gcdev; #GC_deviation
+	}## added 22.09.2018
+	
 	#print LOG $count . " " . $tmp . "\n";
 	my $pcent =  $count / $window ;
 	$h_pcent{$position} = $pcent;
-	$h_gcdev{$position} = $gcdev; #GC_deviation
+	
 	print LOG $position . " " . $tmp . " $pcent\n" if $log;
 	$start ++;  # $start += $window; if i choose to calculate the mean on the windw instead of making it for each nucleotid
 }
