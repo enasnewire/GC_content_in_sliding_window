@@ -150,7 +150,7 @@ until ($start > (length($sequence)))
 	
 	#print LOG $count . " " . $tmp . "\n";
 	my $pcent =  $count / $window ;
-	$h_pcent{$position} = $pcent;
+	$h_pcent{$position} = $pcent; # 2019 ca marche pas, ca va overwrite les positions deja 
 	
 	print LOG $position . " " . $tmp . " $pcent\n" if $log;
 	$start ++;  # $start += $window; if i choose to calculate the mean on the windw instead of making it for each nucleotid
@@ -191,7 +191,15 @@ foreach my $key3 ( sort {$a<=>$b} keys %h_gcdev)
 close OUT3;
 close OUT;
 
-}
+%h_pcent = (); 
+%h_gcdev = (); 
+
+
+# avant la fin de la boucle sur toutes les sequences du multifasta il faut que je vide les differents hash
+# sinon si des sequences plus courtes que les premieres sequences traitees apparaissent
+# elles vont avoir des valeurs pour les nucleotides > a leur taille
+
+} # 2019 fin de la boucle sur toutes les sequences du multi_fasta
 
 
 
