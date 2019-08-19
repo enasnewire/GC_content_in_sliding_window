@@ -176,4 +176,3 @@ if($log){close LOG;}
 
 unlink $fasta . ".log" if !$log;
 
-
