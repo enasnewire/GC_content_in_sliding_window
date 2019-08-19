@@ -1,7 +1,9 @@
 # Description
 
-    This script will first calculate, for each nucleotide position, the %GC of the surrounding nucleotid sequence according to the window size.
-    For the first nucleotid, half of the window size will be taken from the end of the sequence, because this script has been developped for cicular genoms.
+    This script will first calculate, for each nucleotide position, the %GC of the surrounding nucleotid
+    sequence according to the window size.
+    For the first nucleotid, half of the window size will be taken from the end of the sequence, because 
+    his script has been developped for cicular genoms.
     Then, i will print a value of % each "step" nucleotides
 	
 # Usage
@@ -10,9 +12,12 @@
     
     
     arguments details :
-    --fasta  Fasta file	(REQUIRED) Can contain multiple sequences: script will produce as many output files as input sequences. Each sequence can be multiline.
-    --window  optional. Window size, even number ONLY. Sets the number of nucleotides used to calculate the %GC value of each position. Default 1000
-    --step  optional. step size. The output will contain a sliding GC% value every "step" nucleotides. The numbers of values you get is therefore (length genome)/(step). Default 100
+    --fasta  Fasta file	(REQUIRED) Can contain multiple sequences: script will produce as many output
+    files as input sequences. Each sequence can be multiline.
+    --window  optional. Window size, even number ONLY. Sets the number of nucleotides used to calculate
+    the %GC value of each position. Default 1000
+    --step  optional. step size. The output will contain a sliding GC% value every "step" nucleotides.
+    The numbers of values you get is therefore (length genome)/(step). Default 100
     --log   optional. for debugging purposes only
     --help   optional. Shows this help
    
@@ -20,7 +25,7 @@
 
     genome.fasta.gc_content
     
-    column 1: "chr1" for convenience when the program is used to create an input for Circos (http://www.circos.ca/) 
+    column 1: "chr1" for convenience when the program is used to create an input for Circos (www.circos.ca/) 
     column 2: start position of interval
     column 3: end position of interval 
     column 4: GC% of the interval 
@@ -37,7 +42,7 @@
 
     genome.fasta.gc_deviation
 
-    column 1: "chr1" for convenience when the program is used to create an input for Circos (http://www.circos.ca/) 
+    column 1: "chr1" for convenience when the program is used to create an input for Circos (/www.circos.ca/) 
     column 2: start position of interval
     column 3: end position of interval 
     column 4: GC deviation of the interval 
