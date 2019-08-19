@@ -12,12 +12,9 @@
     
     
     Arguments details :
-    --fasta	Fasta file	(REQUIRED) Can contain multiple sequences: script will produce as many
-    output files as input sequences. Each sequence can be multiline.
-    --window 	Window size	(optional, default 1000) Even number ONLY. Sets the number of nucleotides
-    used to calculate the %GC value of each position.
-    --step	Step size	(optional, default 100) The output will contain a sliding GC% value every
-    "step" nucleotides. The numbers of values you get is therefore (length genome)/(step).
+    --fasta	Fasta file	(REQUIRED) Can contain multiple sequences: script will produce as many output files as input sequences. Each sequence can be multiline.
+    --window 	Window size	(optional, default 1000) Even number ONLY. Sets the number of nucleotides used to calculate the %GC value of each position.
+    --step	Step size	(optional, default 100) The output will contain a sliding GC% value every "step" nucleotides. The numbers of values you get is therefore (length genome)/(step).
     --log		(optional) For debugging purposes only
     --help		(optional) Shows this help
    
